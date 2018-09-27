@@ -1,0 +1,26 @@
+AllCops:
+  TargetRubyVersion: 2.3.4
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Documentation:
+  Enabled: false
+
+IndentationConsistency:
+  EnforcedStyle: 'rails'
+
+Naming/FileName:
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+
+Rails:
+  Enabled: true
