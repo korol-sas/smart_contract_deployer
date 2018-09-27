@@ -4,3 +4,21 @@
   Static version of css will use Glyphicons sprites by default
   =require twitter-bootstrap-static/sprites
 */
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.alert {
+  margin-top: 10px
+}
