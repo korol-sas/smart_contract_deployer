@@ -135,21 +135,26 @@ solidityCompile = ->
   changeStatusLabel('Compiling...')
 
   $('#bytecode, #interface, #functionHashes, #opcodes').val('')
-  result = selectedCompiler.compile($('#source').val(), 1)
-  if result.errors
-    $('#compile-btn').prop('disabled', false);
-    bootbox.alert({
-        message: "Errors:\n" + result.errors.join("\n")
-    })
-    changeStatusLabel('Failed to compile, correct errors', 'danger')
-    return
 
-  if result.formal && result.formal.errors
-    changeStatusLabel("Contract was successfully compiled... <br>Warnings:<br>" + result.formal.errors.join("<br>"), 'warning')
-  else
-    changeStatusLabel('Contract was successfully compiled...', 'success')
+  try
+    result = selectedCompiler.compile($('#source').val(), 1)
+    if result.errors
+      $('#compile-btn').prop('disabled', false);
+      bootbox.alert({
+          message: "Errors:\n" + result.errors.join("\n")
+      })
+      changeStatusLabel('Failed to compile, correct errors', 'danger')
+      return
 
-  renderContractsList(result.contracts)
+    if result.formal && result.formal.errors
+      changeStatusLabel("Contract was successfully compiled... <br>Warnings:<br>" + result.formal.errors.join("<br>"), 'warning')
+    else
+      changeStatusLabel('Contract was successfully compiled...', 'success')
+
+    renderContractsList(result.contracts)
+  catch e
+    changeStatusLabel('Fatal error: ' + e.stack, 'danger')
+
   $('#compile-btn').prop('disabled', false);
 
 loadSolidityCompilerVersion = ->
