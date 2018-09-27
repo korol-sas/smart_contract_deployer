@@ -10,17 +10,13 @@ AllCops:
     - '.git/**/*'
     - 'Gemfile'
     - 'Rakefile'
-
 Documentation:
   Enabled: false
-
 IndentationConsistency:
   EnforcedStyle: 'rails'
-
 Naming/FileName:
   Exclude:
     - 'Gemfile'
     - 'Rakefile'
-
 Rails:
   Enabled: true
